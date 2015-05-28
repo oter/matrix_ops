@@ -1,7 +1,7 @@
 @echo off
 SET icarus_binaries=C:\iverilog\bin
 SET project_dir=C:\Users\satur\workspaceSigasi\2course
-SET source_files=%project_dir%\testbench.v %project_dir%\matrix_mult_vector.v
+SET source_files=%project_dir%\testbench.v %project_dir%\matrix_mult_vector.v %project_dir%\adder.v %project_dir%\devider.v %project_dir%\multiplier.v 
 SET binary_name=test
 
 taskkill /IM gtkwave.exe > NUL 2>&1

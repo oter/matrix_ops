@@ -15,6 +15,7 @@ module testbench;
 	wire[8:0] res2;
 	wire[8:0] res3;
 	wire[8:0] res4;
+	
 	assign res1=result[0+:DATA_WIDTH];
 	assign res2=result[DATA_WIDTH+:DATA_WIDTH];
 	assign res3=result[DATA_WIDTH*2+:DATA_WIDTH];
@@ -35,9 +36,7 @@ module testbench;
 		reset_multiplier <= 1;
 	  	calculate <= 1;
 	  	
-		@(posedge clk) 
-		
-		@posedge clk
+		@(posedge clk)
 		$finish;
 		#10 $finish;
 	end
