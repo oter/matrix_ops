@@ -2,4 +2,15 @@
 .project
 out.vcd
 test
+*.bat
+*.wlf
+*.mti
+_info
+*.qdb
+_vmake
+*.mpf
+*.mti
+*.cpp
+*.qpg
+*.py
 
