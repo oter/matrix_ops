@@ -39,7 +39,7 @@ module equotion_solver(i_clk, i_rst_n, i_calc_cmd, i_matrix, o_roots, o_ready);
 		genvar id, jd;
 		for (id = 0; id < MATRIX_SIZE; id = id + 1) begin : GEN_UNPACK_I
 			for (jd = 0; jd < MATRIX_SIZE + 1; jd = jd + 1) begin : GEN_UNPACK_J
-				assign matrix_unpacked = i_matrix[DATA_WIDTH * (id * (MATRIX_SIZE + 1) + jd) +: DATA_WIDTH];
+				assign matrix_unpacked[id][jd] = i_matrix[DATA_WIDTH * (id * (MATRIX_SIZE + 1) + jd) +: DATA_WIDTH];
 				divider divider_insts(
 					.input_a(matrix_unpacked[id][jd]), 		// input, dividend
         			.input_b(row_dividers[id]), 			// input, divisor
