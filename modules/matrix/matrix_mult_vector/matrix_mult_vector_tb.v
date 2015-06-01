@@ -1,4 +1,5 @@
-module testbench;
+module matrix_mult_vector_tb;
+	parameter DUMP = 1;
 	parameter MATRIX_WIDTH = 2;
 	parameter MATRIX_HEIGHT = 2;
 	parameter DATA_WIDTH = 8;
@@ -29,8 +30,10 @@ module testbench;
 	reg [VECTOR_SIZE-1:0]vector = {8'b1010,8'b1110};
 	
 	initial begin
-		$dumpfile("out.vcd");
-	  	$dumpvars(0,testbench);
+		if(DUMP) begin
+			$dumpfile("out.vcd");
+		  	$dumpvars(0,matrix_mult_vector_tb);
+		end
 	  	reset_multiplier <= 0;
 	  	@(negedge clk);
 		reset_multiplier <= 1;
