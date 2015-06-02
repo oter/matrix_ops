@@ -12,6 +12,10 @@ module matrix_mult_vector_tb;
 	reg clk = 0;
 	reg reset_multiplier = 1;
 	
+
+	wire ready;
+	wire [MATRIX_SIZE-1:0]result;
+	
 	wire[8:0] res1;
 	wire[8:0] res2;
 	wire[8:0] res3;
@@ -23,8 +27,6 @@ module matrix_mult_vector_tb;
 	assign res4=result[DATA_WIDTH*3+:DATA_WIDTH];
 
 	
-	wire ready;
-	wire [MATRIX_SIZE-1:0]result;
 	
 	reg [MATRIX_SIZE-1:0]matrix = {8'b10,8'b11,8'b110,8'b1110};
 	reg [VECTOR_SIZE-1:0]vector = {8'b1010,8'b1110};
