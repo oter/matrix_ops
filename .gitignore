@@ -8,7 +8,6 @@ test
 _info
 *.qdb
 _vmake
-*.mpf
 *.mti
 *.cpp
 *.qpg
