@@ -1,3 +1,6 @@
+# Cyclon 2 DE2 Board
+# Vertex 4 ? ICAP interface
+
 cd $1
 PROJECT_DIR="modules/matrix/matrix_mult_matrix/"
 PROJECT_NAME=$(basename $PROJECT_DIR)
