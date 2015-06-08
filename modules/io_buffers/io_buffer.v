@@ -36,15 +36,13 @@ module io_buffer(i_clk, i_rst_n, i_push_cmd, i_pop_cmd, i_data, o_data);
 			for (i = 0; i < STACK_SIZE; i = i + 1) begin
 				stack <= 0;
 			end
-			o_data <= 0;
 			stack_pointer <= 0;
 			o_data_reg <= 0;
 		end
 		else if (i_push_cmd) begin
 			stack_pointer <= stack_pointer + 1;
 			stack[stack_pointer] <= i_data;
-		end 
-		else if (i_pop_cmd) begin
+		end else if (i_pop_cmd) begin
 			stack_pointer <= stack_pointer - 1;
 			o_data_reg <= stack[stack_pointer];		
 		end
