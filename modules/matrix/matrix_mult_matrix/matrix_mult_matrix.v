@@ -17,7 +17,7 @@ module matrix_mult_matrix (clk, i_calc, i_rst_n, i_matrix_1, i_matrix_2, o_resul
 	localparam SECOND_MATRIX_SIZE = SECOND_MATRIX_WEIGHT * DATA_WIDTH;
 	localparam BUFFER_MATRIX_SIZE = BUFFER_MATRIX_WEIGHT * DATA_WIDTH;
 
-	localparam RESULT_MATRIX_SIZE = FIRST_MATRIX_HEIGHT * SECOND_MATRIX_WIDTH * DATA_WIDTH;
+	localparam RESULT_MATRIX_SIZE = RESULT_MATRIX_WEIGHT * DATA_WIDTH;
 	
 	input clk;
 	input i_rst_n;
@@ -35,7 +35,7 @@ module matrix_mult_matrix (clk, i_calc, i_rst_n, i_matrix_1, i_matrix_2, o_resul
 
 	wire [DATA_WIDTH-1:0] sum_provider [0:SUM_PROVIDER_WEIGHT-1];
 
-	wire[7:0] test0, test1, test2, test3, test4, test5, test6, test7, test8, test9, test10, test11;
+
 	generate
 		genvar m,n,l; 
 		for(n = 0; n < FIRST_MATRIX_HEIGHT; n = n + 1) begin
@@ -50,18 +50,7 @@ module matrix_mult_matrix (clk, i_calc, i_rst_n, i_matrix_1, i_matrix_2, o_resul
 			end
 		end
 	endgenerate
-	assign test0[7:0] = sum_provider[0];
-	assign test1[7:0] = sum_provider[1];
-	assign test2[7:0] = sum_provider[2];
-	assign test3[7:0] = sum_provider[3];
-	assign test4[7:0] = sum_provider[4];
-	assign test5[7:0] = sum_provider[5];
-	assign test6[7:0] = sum_provider[6];
-	assign test7[7:0] = sum_provider[7];
-	assign test8[7:0] = sum_provider[8];
-	assign test9[7:0] = sum_provider[9];
-	assign test10[7:0] = sum_provider[10];
-	assign test11[7:0] = sum_provider[11];
+
 	integer i;
 	integer j;
 	integer k;
@@ -72,7 +61,6 @@ module matrix_mult_matrix (clk, i_calc, i_rst_n, i_matrix_1, i_matrix_2, o_resul
 
 	parameter IDLE = 0;
 	parameter CALC = 1;
-	parameter FLUSH = 2;
 	always @(posedge clk, negedge i_rst_n) begin
 		if(!i_rst_n) begin
 			ready <= 0;
@@ -95,9 +83,6 @@ module matrix_mult_matrix (clk, i_calc, i_rst_n, i_matrix_1, i_matrix_2, o_resul
 							end
 						end
 					end	
-					state <= FLUSH;
-				end
-				FLUSH : begin
 					state <= IDLE;
 					ready <= 1;
 				end
